@@ -1,2 +1,2 @@
-# shark
-Project for Shark Tracking in 3d Modeling class
+# shark_track
+3D project, shark tracking &amp; protection
