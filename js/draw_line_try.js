@@ -31,7 +31,7 @@ var dateFormat = d3.time.format("%Y");
 var graph = d3.select("#graph")
     .attr("width", width + margin*2)
     .attr("height", height + margin*2)
-  .append("g")
+    .append("g")
     .attr("transform", "translate(" + margin + "," + margin + ")");
 
 d3.csv("data/data_long.csv", function(error, data) {
@@ -69,20 +69,26 @@ d3.csv("data/data_long.csv", function(error, data) {
           .attr("cy", function(d) {
             return yScale(d.capture);
           })
-          .attr("r", 5)
-          .style("opacity", 0)
-          .attr("fill", "rgba(115,176,198,0.9)"); 
+          .attr("r", 7)
+          .attr("fill", "rgba(115,176,198,0.9)")
+          .attr("opacity",0); 
 
   circles
           .on("mouseover", mouseoverFunc)
           .on("mousemove", mousemoveFunc)
           .on("mouseout", mouseoutFunc);
 
+//set the label:
+  var text = graph.selectAll("text")
+      .data(data)
+      .enter()
+      .append("text");
+
   function mouseoverFunc(d) {
           d3.select(this)
             .transition()
             .style("opacity", 0.8)
-            .attr("r", 9);
+            .attr("r", 10);
           tooltip
             .style("display", null) // this removes the display none setting from it
             .html("<p>" + d.capture + " sharks were captured in " + d.year);
@@ -112,10 +118,19 @@ d3.csv("data/data_long.csv", function(error, data) {
   //     .style("text-anchor", "end")
   //     .text("Capture");
 
-  graph.append("path")
+  var path = graph.append("path")
       // .datum(data)
       .attr("class", "line")
+      .style("display","none");
       // .attr("d", line);
+
+  graph.append("text")
+      // .attr("x", 0)
+      // .attr("y","20vh")
+      .text("· Hover over the line to see more details.")
+      .attr("class","notice")
+      .attr("fill","#ccc")
+      .attr("stroke","rgba(0,0,0,0)");
 
 
   function getSmoothInterpolation() {
@@ -136,6 +151,8 @@ d3.csv("data/data_long.csv", function(error, data) {
     return line(interpolatedLine);
   }
 }
+
+
 
 // d3.select("#button2")
 //   .on("click", function() {
@@ -163,18 +180,70 @@ d3.csv("data/data_long.csv", function(error, data) {
     // graph.select('.y.axis')
     //   .call(yAxis);
 
-    graph.selectAll('.line')
+    path
+      .attr("d", line(data));
+
+    var totalLength = path.node().getTotalLength();
+
+    path
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .style("display", null)
       .transition()
-      .duration(6000)
-      .attrTween("d", getSmoothInterpolation);;
+      .duration(5000)
+      .ease("linear")
+      .attr("stroke-dashoffset", 0);
 
     graph.selectAll('.circles')
+      .transition()
+      .delay(5000)
+      .style("opacity", function(d){
+            if(d.year === "1965" || d.year === "2011" ){
+            return 0.8;
+          } else {return 0}
+          })
+      .duration(1000)
       .attr("cx", function(d) {
             return xScale(d.yearNew);
           })
-          .attr("cy", function(d) {
+      .attr("cy", function(d) {
             return yScale(d.capture);
           });
+
+    graph.selectAll(".notice")
+      .attr("x",0)
+      .attr("y", height/4.5);
+
+    // function getTextWidth(text, fontSize, fontFace) {
+    //   var a = document.createElement('canvas');
+    //   var b = a.getContext('2d');
+    //   b.font = fontSize + 'px ' + fontFace;
+    //   return b.measureText(text).width;
+    // } 
+
+    text
+      .transition()
+      .delay(5000)
+      .attr("opacity",1)
+      .duration(1000)
+      .attr("transform", function(d,i){
+          if(d.year === "1965" || d.year === "2011" ){
+            return "translate("+ xScale(d.x)+ "," + (yScale(d.y))+ ")";
+          }
+        })
+        .text(function(d,i){
+          if(d.year === "1965" || d.year === "2011"){
+          return d.capture           
+          }
+        })
+        .attr("font-family", "'Lato', sans-serif")
+        // .attr("font-size", "1.3vw")
+        .attr("dx","-4.3em")
+        .attr("dy", "1.5em")
+        .attr("fill", "rgba(115,176,198,0.9)")
+        .attr("class","labelOnLine");
+
+
   }
 
     d3.select(window).on('resize', resize); 

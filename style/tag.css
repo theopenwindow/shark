@@ -7,10 +7,6 @@
 	margin-bottom: 2%;
   	}
 
-  	.content-main{
-  		overflow: auto;
-  	}
-
   	.control-main{
   		position:fixed;
   		bottom:0px;
@@ -39,7 +35,7 @@
 	margin-bottom: 0%;
 	margin-left: 4%;
 	text-align: center;
-	font-size: 10vw;
+	font-size: 9vw;
 	text-align: center;
 	font-family: 'Alegreya SC', serif;
 	color: black;
@@ -128,47 +124,6 @@
 		opacity: 0;
 	}
 
-	img.mapimgL{
-		width: 100%;
-		display: none;
-	}	
-
-	img.mapimgS{
-		width: 100%;
-		display:none;
-	}
-
-	div#mapS{
-		display: none;
-	}
-
-
-	button{
-	    color: #72b0c6;
-		font-size: 11.1px;
-		background: #ffffff;
-		padding: 3px 3px 3px 3px;
-		border: solid #72b0c6 1px;
-		text-decoration: none;
-		margin-bottom: 2%;
-	}
-
-	button:hover {
-	  background: #ffffff;
-	  background-image: -webkit-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -moz-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -ms-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
-	  text-decoration: none;	
-	}
-
-	.labelimg{
-		width: 100%;
-		margin-top: 1%;
-		display: none;
-	}
-
 }
 
 @media all and (min-width: 426px) and (max-width: 768px) {
@@ -179,10 +134,6 @@
     /*background-color: orange;*/
 	margin-top: 2%;
 	margin-bottom: 2%;
-  	}
-
-  	.content-main{
-  		overflow: scroll;
   	}
 
   	.control-main{
@@ -299,47 +250,6 @@
 		opacity: 0;
 	}
 
-	img.mapimgL{
-		width: 100%;
-		display: none;
-	}	
-
-	img.mapimgS{
-		width: 100%;
-		display:none;
-	}
-
-	div#mapS{
-		display: none;
-	}
-
-	button{
-	    color: #72b0c6;
-		font-size: 14px;
-		background: #ffffff;
-		padding: 6px 10px 6px 10px;
-		border: solid #72b0c6 1px;
-		text-decoration: none;
-		margin-bottom: 2%;
-	}
-
-	button:hover {
-	  background: #ffffff;
-	  background-image: -webkit-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -moz-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -ms-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
-	  text-decoration: none;	
-	}
-
-	.labelimg{
-		width: 60%;
-		margin-top: 1%;
-		margin-left: 20%;
-		display: none;
-	}
-
 }
 
 
@@ -353,7 +263,6 @@
 		margin-top: 2%;
 		margin-bottom: 2%;
 		margin-left: 2%;
-		overflow: auto;
 	}
 
 	.control-main{
@@ -465,64 +374,10 @@
 	}
 
 	canvas{
-		width: 85%;
-		margin-left: -18%;
-	}
+		width: 84% !important;
+		margin-left: -17%;
+}
 
-	img.mapimgL{
-		width: 100%;
-		display: none;
-	}	
-
-	img.mapimgS{
-		width: 100%;
-		display:none;
-	}
-
-	div#mapS{
-		display: none;
-	}
-
-
-
-	button.selected{
-	  color: #ffffff;
-	  font-size: 14px;
-	  background: #73b0c6;
-	  padding: 6px 10px 6px 10px;
-	  border: solid #72b0c6 1px;
-	  text-decoration: none;
-	  opacity:0.8;
-	}
-
-	button{
-	    color: #72b0c6;
-		font-size: 14px;
-		background: #ffffff;
-		padding: 6px 10px 6px 10px;
-		border: solid #72b0c6 1px;
-		text-decoration: none;
-		margin-bottom: 1%;
-/*		margin-right: 0.6%;*/
-	}
-
-	button:hover {
-	  background: #ffffff;
-	  background-image: -webkit-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -moz-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -ms-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: -o-linear-gradient(top, #ffffff, #d5edf5);
-	  background-image: linear-gradient(to bottom, #ffffff, #d5edf5);
-	  text-decoration: none;	
-	}
-
-	.labelimg{
-		width: 50%;
-		margin-top: 1%;
-		margin-left: 25%;
-		display: none;
-	}
-	
 
 }
 
@@ -581,7 +436,7 @@ a:hover{
 	cursor: pointer;
 }
 
-	
+
 
 
 
